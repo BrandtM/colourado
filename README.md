@@ -22,5 +22,5 @@ let rgb_color: Color = Color::hsv_to_rgb(hue, saturation, value);
 
 A color palette might look like this when rendered:  
 
-[[examples/example.png|alt=example_image]]  
+![Example image](https://raw.githubusercontent.com/BrandtM/colourado/master/examples/example.png)  
 
