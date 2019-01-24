@@ -24,3 +24,6 @@ A color palette might look like this when rendered:
 
 ![Example image](https://raw.githubusercontent.com/BrandtM/colourado/master/examples/example.png)  
 
+Test the color palettes for yourself by running  
+`cargo run --example preview N`  
+where `N` is the amount of colors to generate and display.
