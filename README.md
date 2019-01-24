@@ -17,3 +17,10 @@ let saturation = 0.5;
 let value = 0.3;
 let rgb_color: Color = Color::hsv_to_rgb(hue, saturation, value);
 ```
+
+## Example  
+
+A color palette might look like this when rendered:  
+
+[[examples/example.png|alt=example_image]]  
+

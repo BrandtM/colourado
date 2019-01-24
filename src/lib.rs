@@ -87,14 +87,15 @@ impl ColorPalette {
 
         // generate a random color but prevent it from being completely white or black
         let mut hue: f32 = rng.gen_range(0.0, 360.0);
-        let saturation: f32 = rng.gen_range(0.5, 1.0);
+        let mut saturation: f32 = rng.gen_range(0.5, 1.0);
         let value: f32 = rng.gen_range(0.3, 1.0);
 
         let mut palette: Vec<Color> = vec![];
 
         for i in 0..count {
             let rgb = Color::hsv_to_rgb(hue, saturation, value);
-            hue = (hue + 85.0 + (i as f32)) % 360.0;
+            hue = (hue + 85.0 + (i as f32) * 55.0) % 360.0;
+            saturation = ((i as f32) * 0.5).sin();
 
             palette.push(Color {
                 red: rgb.red,
