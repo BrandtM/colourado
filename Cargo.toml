@@ -1,8 +1,12 @@
 [package]
 name = "colourado"
-version = "0.1.0"
+description = "A small and minimalistic library to generate a random color palette"
+version = "0.1.1"
 authors = ["PrydeRage <marius.brandt@hotmail.com>"]
 edition = "2018"
+license = "MIT"
+repository = "https://github.com/BrandtM/colourado"
+readme = "README.md"
 
 [dependencies]
 rand = "0.6"
