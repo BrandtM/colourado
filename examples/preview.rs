@@ -5,24 +5,34 @@ use colourado::*;
 use std::env;
 
 fn main() {
-	let num_colors = env::args()
-		.nth(1)
-		.unwrap_or("4".to_string())
-		.parse()
-		.unwrap_or(4);
+	let args: Vec<String> = env::args().collect();
 
-	let palette = ColorPalette::new(num_colors);
+	if args.len() != 4 {
+		panic!("You must supply exactly 2 parameters. The palette type and the number of colors to generate!");
+	}
 
-    let mut window: PistonWindow =
-        WindowSettings::new("Hello Piston!", [640, 480])
-        .exit_on_esc(true).build().unwrap();
+	let num_colors = args[2].parse().unwrap_or(4);
+	let palette_type = match args[1].to_lowercase().as_ref() {
+		"pastel" => PaletteType::Pastel,
+		"dark" => PaletteType::Dark,
+		_ => PaletteType::Random
+	};
+	let adjacent = match args[3].to_lowercase().as_ref() {
+		"adjacent" => true,
+		"spread" => false,
+		_ => false
+	};
+
+	let palette = ColorPalette::new(num_colors, palette_type, adjacent);
+
+    let mut window: PistonWindow = WindowSettings::new("Color palette preview", [1280, 720]).exit_on_esc(true).build().unwrap();
     while let Some(event) = window.next() {
-        window.draw_2d(&event, |context, graphics| {
-            clear([1.0; 4], graphics);
+		window.draw_2d(&event, |context, graphics| {
+			clear([1.0; 4], graphics);
 
 			for (i, color) in (&palette.colors).iter().enumerate() {
 				rectangle([color.red, color.green, color.blue, 1.0], 
-					  [120.0 * i as f64, 0.0, 100.0, 100.0],
+					  [(120.0 * i as f64) % 1200.0, ((120.0 * i as f64) / 1200.0).floor() * 120.0, 100.0, 100.0],
                       context.transform,
                       graphics);
 			}
