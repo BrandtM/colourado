@@ -1,7 +1,7 @@
 [package]
 name = "colourado"
 description = "A small and minimalistic library to generate a random color palette"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["PrydeRage <marius.brandt@hotmail.com>"]
 edition = "2018"
 license = "MIT"
